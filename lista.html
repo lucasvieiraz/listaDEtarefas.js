@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Dinâmica</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        h1 {
+            color: black
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-right: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4a90e2;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #357abd;
+        }
+        ol {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Adicione itens à lista:</h1>
+        <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+            <input type="text" id="item" placeholder="Digite um item">
+            <button onclick="adicionarItem()">Adicionar</button>
+        </div>
+
+        <ol id="lista"></ol>
+    </div>
+
+    <script>
+        const lista = [];
+
+        function adicionarItem() {
+            const itemInput = document.getElementById('item');
+            const item = itemInput.value;
+
+            if(item) {
+                lista.push(item);
+                itemInput.value = '';
+                exibirLista();
+            }
+        }
+
+        function exibirLista() {
+            const listaUl = document.getElementById('lista');
+            listaUl.innerHTML = '';
+
+            for(let i = 0; i < lista.length; i++) {
+                const li = document.createElement('li');
+                li.textContent = lista[i];
+                listaUl.appendChild(li);
+            }
+        }
+    </script>
+</body>
+</html>
